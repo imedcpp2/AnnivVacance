@@ -12,6 +12,8 @@ localStorage.setItem(’nb_anniv’, JSON.stringify(nb_anniv));
 document.querySelector(’#anniv_personne’).value = "";
 document.querySelector(’#anniv_date’).value = "";
 anniv_liste();
+/* Cette fonction affiche sur la page la liste des anniversaires
+stockés dans le localstorage du navigateur */
 unction anniv_liste() {
 nb_anniv = anniv_get_nb_anniv();
 result = "";
