@@ -57,3 +57,18 @@ $("#couleurs_proposees button").bind("click", function() {
 $(’#couleur’).val($(this).text());
 });
 }
+/*****************************************************************************/
+$("#couleur").bind( "keyup", function() {
+masque_couleur($(this).val());
+});
+function masque_couleur(color) {
+$(’#couleurs_proposees button’).each(function( index ) {
+if ($(this).html().indexOf(color) > -1) {
+$(this).show();
+}
+else {
+$(this).hide();
+}
+});
+}
+/********************************************************************/
