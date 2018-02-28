@@ -33,3 +33,27 @@ result+=’<br />
 document.querySelector(’#anniv_liste’).innerHTML = result;
 return nb_anniv;
 }
+function charge_couleurs() {
+nb_anniv = anniv_get_nb_anniv();
+// On vide la div contenant les couleurs si elle en contient
+// pour recréer les couleurs.
+couleur_div = document.querySelector(’#couleurs_proposees’);
+couleur_div.innerHTML = ’’;
+couleur_list = Array();
+for (i=0;i<nb_anniv;i++) {
+anniversaire = JSON.parse(localStorage.getItem(i.toString()));
+couleur_list.push(anniversaire.couleur);
+}
+couleur_list_unique = couleur_list.filter(function(elem, pos) {
+return couleur_list.indexOf(elem) == pos;
+})
+// Génération et affichage des boutons
+couleur_list.filter(function(elem, pos) {
+couleur_div.innerHTML = couleur_div.innerHTML +
+’<button style="color:#’+elem+’">’+elem+’</button>’;
+})
+// Écouteurs de boutons pour remplir la couleur choisie
+$("#couleurs_proposees button").bind("click", function() {
+$(’#couleur’).val($(this).text());
+});
+}
